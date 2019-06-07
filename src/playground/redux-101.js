@@ -1,5 +1,21 @@
 import { createStore } from "redux";
 
+// Action generators - functions that return action objects
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
+  type: "INCREMENT",
+  incrementBy
+});
+const decrementCount = ({ decrementBy = 1 } = {}) => ({
+  type: "DECREMENT",
+  decrementBy
+});
+// set
+const setCount = ({ count }) => ({
+  type: "SET",
+  count
+});
+// reset
+
 const store = createStore((state = { count: 0 }, action) => {
   switch (action.type) {
     case "INCREMENT":
@@ -36,20 +52,13 @@ store.dispatch({
   incrementBy: 5
 });
 
-store.dispatch({
-  type: "INCREMENT"
-});
-store.dispatch({
-  type: "DECREMENT",
-  decrementBy: 10
-});
+store.dispatch(incrementCount({ incrementBy: 5 }));
+
+store.dispatch(decrementCount({ decrementBy: 7 }));
 
 // reset count to 0
 store.dispatch({
   type: "RESET"
 });
 
-store.dispatch({
-  type: "SET",
-  count: 101
-});
+store.dispatch(setCount({ count: 101 }));
