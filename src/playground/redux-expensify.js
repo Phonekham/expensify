@@ -86,10 +86,10 @@ const store = createStore(
     filters: filterReducer
   })
 );
-console.log(store.getState());
+// console.log(store.getState());
 
 store.subscribe(() => {
-  console.log(store.getState()); // to track changes
+  //   console.log(store.getState()); // to track changes
 });
 
 const expenseOne = store.dispatch(
@@ -99,10 +99,10 @@ const expenseTwo = store.dispatch(
   addExpense({ description: "coffee", amount: 400 })
 );
 
-store.dispatch(removeExpense({ id: expenseOne.expense.id }));
+// store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
-store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
-store.dispatch(setTextFilter("rent"));
+// store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
+// store.dispatch(setTextFilter("rent"));
 
 const demoState = {
   expenses: [
@@ -126,4 +126,4 @@ const user = {
   name: "Phone",
   age: 24
 };
-console.log({ ...user, location: "VT" });
+// console.log({ ...user, location: "VT" });
