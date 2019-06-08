@@ -1,39 +1,6 @@
 import { createStore, combineReducers } from "redux";
 import uuid from "uuid";
 
-// Add expenses
-const addExpense = ({
-  description = "",
-  note = "",
-  amount = 0,
-  createAt = 0
-} = {}) => ({
-  type: "ADD_EXPENSE",
-  expense: {
-    id: uuid(),
-    description,
-    note,
-    amount,
-    createAt
-  }
-});
-// RemoveExpense
-const removeExpense = ({ id } = {}) => ({
-  type: "REMOVE_EXPENSE",
-  id
-});
-// Edit expense
-const editExpense = (id, updates) => ({
-  type: "EDIT_EXPENSE",
-  id,
-  updates
-});
-// set text filter
-const setTextFilter = (text = "") => ({
-  type: "SET_TEXT_FILTER",
-  text
-});
-
 // Expense reducer
 const expensesReducerDefaultState = [];
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
