@@ -10,15 +10,15 @@ import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 
 const store = configureStore();
-store.dispatch(addExpense({ description: "Rent bill" }));
-store.dispatch(addExpense({ description: "Food" }));
-store.dispatch(setTextFilter("bill"));
+store.dispatch(addExpense({ description: "Rent bill", amount: 400 }));
+store.dispatch(addExpense({ description: "Food bill" }));
+store.dispatch(setTextFilter("rent"));
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 console.log(visibleExpenses);
 setTimeout(() => {
-  store.dispatch(setTextFilter("rent"));
+  store.dispatch(setTextFilter("bill"));
 }, 3000);
 const jsx = (
   <Provider store={store}>
