@@ -9,14 +9,17 @@ console.log(now.format("Do MMM YYYY"));
 // Setup note state
 
 class ExpenseForm extends React.Component {
-  state = {
-    description: "",
-    note: "",
-    amount: "",
-    createdAt: moment(),
-    calendarfocused: false,
-    error: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      description: props.expense ? props.expense.description : "",
+      note: props.expense ? props.expense.note : "",
+      amount: props.expense ? (props.expense.amount / 100).toString() : "",
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      calendarfocused: false,
+      error: ""
+    };
+  }
 
   onDescriptionChange = e => {
     const description = e.target.value;
